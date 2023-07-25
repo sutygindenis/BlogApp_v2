@@ -42,3 +42,7 @@ body {
     gap: 20px;
     
 }
+
+.input-text-post {
+    resize: none
+}
