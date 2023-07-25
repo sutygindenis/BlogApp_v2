@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    font-family: 'Barlow', sans-serif;
+}
+
+.control-col {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.control-col__control-publish {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.control-col__header {
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.feed-col__header {
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.feed-col {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.feed-col__posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
