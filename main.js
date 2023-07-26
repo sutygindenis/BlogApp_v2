@@ -13,12 +13,11 @@ const countSymbolsWarningNode = document.querySelector ('.js-count-symbols-warni
 // const textCountSymbolsWarningNode = document.querySelector ('.js-text-count-symbols-warning')
 
 publishPostBtn.addEventListener ('click', function () {
+    if (inputTitlePostNode.value.length === 0 || inputTextPostNode.value.length === 0) {
+    return
+    }
     renderPosts ()
-    const currentDate = new Date ()
-    const dt = `1111${currentDate.getDate}2222`
-    console.log (currentDate)
-
-    // addNewPostToPosts ()
+    cleaerInputs ()
 })
 
 inputTitlePostNode.addEventListener ('input', function () {
@@ -35,13 +34,13 @@ const validation = function () {
     const textLength = inputTextPostNode.value.length;
 
     if (titleLength > TITLE_VALIDATION_LIMIT) {
-        countSymbolsWarningNode.innerText = `Длина символов заголовка не должна превышать ${TITLE_VALIDATION_LIMIT} символов`
+        countSymbolsWarningNode.innerText = `Заголовок больше ${TITLE_VALIDATION_LIMIT} символов`
         countSymbolsWarningNode.removeAttribute ('hidden', )
         return
     }
 
     if (textLength > TEXT_VALIDATION_LIMIT) {
-        countSymbolsWarningNode.innerText = `Длина символов текста не должна превышать ${TEXT_VALIDATION_LIMIT} символов`
+        countSymbolsWarningNode.innerText = `Пост больше ${TEXT_VALIDATION_LIMIT} символов`
         countSymbolsWarningNode.removeAttribute ('hidden', )
         return
     }
@@ -55,8 +54,10 @@ const getNewPostFromInput = function () {
     const title = inputTitlePostNode.value
     const text = inputTextPostNode.value
 
+
+
     const currentDate = new Date ()
-    const dt = `${currentDate.getDate()}.${currentDate.getMonth()}.${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}`
+    const dt = `${currentDate.toLocaleDateString ()} ${currentDate.toLocaleTimeString ()}`
 
     return {
         dt,
@@ -100,4 +101,12 @@ const renderPosts = function () {
     feedPostsNode.innerHTML = newPostHTML
 }
 
+const cleaerInputs = function () {
+    inputTextPostNode.value = ``
+    inputTitlePostNode.value = ``
+}
 
+
+const emptyInputsRestriction = function () {
+
+}
