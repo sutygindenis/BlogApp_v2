@@ -2,10 +2,11 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 100px;
     font-family: 'Barlow', sans-serif;
     margin: 0 auto;
-    padding: 102px 217px;
+    padding: 102px ;
 
 }
 
