@@ -53,23 +53,21 @@ body {
     font-size: 25px;
 }
 
-.feed-col {
-    width: 500px;
-}
-
 .feed-col__header {
     font-weight: bold;
     font-size: 40px;
 }
 
 .feed-col {
+    width: 500px;
+    height: 900px;
     display: flex;
     flex-direction: column;
     gap: 60px;
 }
 
 .feed-col__posts {
-    width: max-content;
+    width: 500px;
     height: max-content;
     display: flex;
     flex-direction: column;
@@ -78,18 +76,9 @@ body {
 }
 
 .post {
-    width: 500px;
-
     display: flex;
     flex-direction: column;
-    gap: 15px;
-
-}
-
-.post__title {
-    width: fit-content;
-    font-size: 32px;
-    font-weight: bold;
+    gap: 15px;   
 }
 
 .post__date {
@@ -97,6 +86,13 @@ body {
     color: #0094FF;
 }
 
+.post__title {
+    font-size: 32px;
+    font-weight: bold;
+    overflow-wrap: break-word;
+}
+
 .post__text {
     font-size: 25px;
+    overflow-wrap: break-word;
 }

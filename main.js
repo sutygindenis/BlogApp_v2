@@ -10,12 +10,14 @@ const feedPostsNode = document.querySelector ('.js-feed-col__posts')
 const publishPostBtn = document.querySelector ('.js-publish-btn')
 
 const countSymbolsWarningNode = document.querySelector ('.js-count-symbols-warning')
-// const textCountSymbolsWarningNode = document.querySelector ('.js-text-count-symbols-warning')
 
 publishPostBtn.addEventListener ('click', function () {
     if (inputTitlePostNode.value.length === 0 || inputTextPostNode.value.length === 0) {
     return
     }
+
+    getNewPostFromInput ()
+
     renderPosts ()
     cleaerInputs ()
 })
@@ -36,48 +38,36 @@ const validation = function () {
     if (titleLength > TITLE_VALIDATION_LIMIT) {
         countSymbolsWarningNode.innerText = `Заголовок больше ${TITLE_VALIDATION_LIMIT} символов`
         countSymbolsWarningNode.removeAttribute ('hidden', )
+        publishPostBtn.setAttribute ('disabled', '')
         return
     }
 
     if (textLength > TEXT_VALIDATION_LIMIT) {
         countSymbolsWarningNode.innerText = `Пост больше ${TEXT_VALIDATION_LIMIT} символов`
         countSymbolsWarningNode.removeAttribute ('hidden', )
+        publishPostBtn.setAttribute ('disabled', '')
         return
     }
-    
+    publishPostBtn.removeAttribute ('disabled', '')
     countSymbolsWarningNode.setAttribute ('hidden', '')
 }
 
 
 
 const getNewPostFromInput = function () {
+
     const title = inputTitlePostNode.value
     const text = inputTextPostNode.value
-
-
 
     const currentDate = new Date ()
     const dt = `${currentDate.toLocaleDateString ()} ${currentDate.toLocaleTimeString ()}`
 
-    return {
+
+    const newPost = {
         dt,
         title,
         text
     }
-}
-
-const addValeuToNewPost = function () {
-
-    newPost = getNewPostFromInput ()
-    
-    return newPost
-}
-
-const addNewPostToPosts = function () {
-    
-    addValeuToNewPost ()
-    
-
 
     posts.push (newPost)
 }
@@ -86,13 +76,11 @@ const renderPosts = function () {
     
     let newPostHTML = ''
     
-    addNewPostToPosts ()
-    
     posts.forEach(newPost => {
         newPostHTML += `
             <div class='post'>
                 <p class='post__date'>${newPost.dt}</p>
-                <p class='post__title'>${newPost.title}</p>
+                <div class='post__title'>${newPost.title}</div>
                 <p class='post__text'>${newPost.text}</p>
             </div>
         `;
@@ -104,9 +92,4 @@ const renderPosts = function () {
 const cleaerInputs = function () {
     inputTextPostNode.value = ``
     inputTitlePostNode.value = ``
-}
-
-
-const emptyInputsRestriction = function () {
-
 }
